@@ -1,4 +1,4 @@
-package br.inatel.projeto;
+package br.inatel.projeto.database;
 
 import com.mysql.cj.protocol.Resultset;
 
@@ -17,6 +17,7 @@ public class Database {
 
     static final String url = "jdbc:mysql://localhost:3306/" + database + "?useTimezone=true&serverTimezone=UTC&useSSL=false";
     //static final String url = "jdbc:mysql://localhost:3306/" + database";
+    public boolean check = false;
 
     public void connect() {
         try {
