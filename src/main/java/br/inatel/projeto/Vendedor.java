@@ -2,7 +2,7 @@ package br.inatel.projeto;
 
 public class Vendedor extends Funcionario{
 
-    private int numVendas = 0;
+    private int numVendas;
     private int metaMes;
     private float comissao;
 
@@ -15,6 +15,7 @@ public class Vendedor extends Funcionario{
         this.gestor_cpf = gestor_cpf;
         this.metaMes = metaMes;
         this.comissao = comissao;
+        numVendas = 0;
     }
 
     public int getNumVendas() {

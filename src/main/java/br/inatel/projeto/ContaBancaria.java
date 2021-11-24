@@ -7,6 +7,13 @@ public class ContaBancaria{
     private float saldo;
     private String Funcionario_cpf;
 
+    public ContaBancaria(int numero, int agencia, String Funcionario_cpf){
+        this.numero = numero;
+        this.agencia = agencia;
+        this.Funcionario_cpf = Funcionario_cpf;
+        saldo = 0;
+    }
+
     public int getNumero() {
         return numero;
     }
