@@ -3,9 +3,29 @@ package br.inatel.projeto;
 public class Produto {
 
     private int SN_produto;
-    private float valor_compra;
-    private float valor_venda;
-    private Fornecedor fornecedor;
+    private String nomeProduto;
+    private float valorCompra;
+    private float valorVenda;
+    private String Forncedor_cnpj;
+
+    public Produto() {
+    }
+
+    public Produto(int SN_produto, String nomeProduto, float valorCompra, float valorVenda, String forncedor_cnpj) {
+        this.SN_produto = SN_produto;
+        this.nomeProduto = nomeProduto;
+        this.valorCompra = valorCompra;
+        this.valorVenda = valorVenda;
+        this.Forncedor_cnpj = forncedor_cnpj;
+    }
+
+    public String getNomeProduto() {
+        return nomeProduto;
+    }
+
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
+    }
 
     public int getSN_produto() {
         return SN_produto;
@@ -15,27 +35,27 @@ public class Produto {
         this.SN_produto = SN_produto;
     }
 
-    public float getValor_compra() {
-        return valor_compra;
+    public float getValorCompra() {
+        return valorCompra;
     }
 
-    public void setValor_compra(float valor_compra) {
-        this.valor_compra = valor_compra;
+    public void setValorCompra(float valor_compra) {
+        this.valorCompra = valor_compra;
     }
 
-    public float getValor_venda() {
-        return valor_venda;
+    public float getValorVenda() {
+        return valorVenda;
     }
 
-    public void setValor_venda(float valor_venda) {
-        this.valor_venda = valor_venda;
+    public void setValorVenda(float valor_venda) {
+        this.valorVenda = valor_venda;
     }
 
-    public Fornecedor getFornecedor() {
-        return fornecedor;
+    public String getForncedor_cnpj() {
+        return Forncedor_cnpj;
     }
 
-    public void setFornecedor(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
+    public void setForncedor_cnpj(String forncedor_cnpj) {
+        Forncedor_cnpj = forncedor_cnpj;
     }
 }
