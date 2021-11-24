@@ -5,6 +5,18 @@ public class Fornecedor {
     private String nome;
     private String telefone;
     private String pais;
+    private String compradorCpf;
+
+    public Fornecedor() {
+    }
+
+    public Fornecedor(String cnpj, String nome, String telefone, String pais, String compradorCpf) {
+        this.cnpj = cnpj;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.pais = pais;
+        this.compradorCpf = compradorCpf;
+    }
 
     public String getCpf() {
         return cnpj;
@@ -36,5 +48,13 @@ public class Fornecedor {
 
     public void setPais(String pais) {
         this.pais = pais;
+    }
+
+    public String getCompradorCpf() {
+        return compradorCpf;
+    }
+
+    public void setCompradorCpf(String compradorCpf) {
+        this.compradorCpf = compradorCpf;
     }
 }
