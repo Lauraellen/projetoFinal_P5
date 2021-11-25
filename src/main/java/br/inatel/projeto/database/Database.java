@@ -1,14 +1,13 @@
 package br.inatel.projeto.database;
 
-import com.mysql.cj.protocol.Resultset;
 
 import java.sql.*;
 
-public class Database {
+public abstract class Database {
 
     Connection connection;
     Statement statement;
-    Resultset result;
+    ResultSet result;
     PreparedStatement preparedStatement;
 
     static final String user = "Dono";
