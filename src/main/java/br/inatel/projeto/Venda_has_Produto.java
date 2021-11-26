@@ -12,6 +12,9 @@ public class Venda_has_Produto {
         this.qtdProdutos = qtdProdutos;
     }
 
+    public Venda_has_Produto() {
+    }
+
     public int getVenda_idVenda() {
         return Venda_idVenda;
     }
