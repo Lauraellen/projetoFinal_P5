@@ -11,13 +11,13 @@ public class Venda {
     private int qtdProdutos;
     private float valorVenda;
 
-    public Venda(String Cliente_cpf, String Vendedor_Funcionario_cpf, int qtdProdutos, float valorVenda){
+    public Venda(String Cliente_cpf, String Vendedor_Funcionario_cpf){
         idVenda = contador;
         contador++;
         this.Cliente_cpf = Cliente_cpf;
         this.Vendedor_Funcionario_cpf = Vendedor_Funcionario_cpf;
-        this.qtdProdutos = qtdProdutos;
-        this.valorVenda = valorVenda;
+        qtdProdutos = 0;
+        valorVenda = 0;
     }
 
     public int getIdVenda() {

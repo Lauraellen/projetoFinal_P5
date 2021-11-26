@@ -16,7 +16,7 @@ public class FornecedorDB extends Database {
             preparedStatement.setString(2, fornecedor.getNome());
             preparedStatement.setString(3, fornecedor.getTelefone());
             preparedStatement.setString(4, fornecedor.getPais());
-            preparedStatement.setString(4, fornecedor.getCompradorCpf());
+            preparedStatement.setString(5, fornecedor.getCompradorCpf());
 
             preparedStatement.execute();
             check = true;

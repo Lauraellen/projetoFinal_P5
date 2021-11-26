@@ -10,7 +10,7 @@ public class Venda_has_ProdutoDB extends Database {
     public boolean insertVenda_Produto(Venda_has_Produto venda_has_produto) {
 
         connect();
-        String sql = "INSERT INTO Venda_has_Produto (Venda_idVenda, Produto_SNPrdouto, qtdProdutos) VALUES (?, ? ,?)";
+        String sql = "INSERT INTO Venda_has_Produto (Venda_idVenda, Produto_SNProduto, qtdProdutos) VALUES (?, ? ,?)";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -37,7 +37,7 @@ public class Venda_has_ProdutoDB extends Database {
 
         connect();
         ArrayList <Venda_has_Produto> venda_has_produtos = new ArrayList<>();
-        String sql = "SELECT * FROM Venda_has_Produto WHERE Venda_idVenda = idVenda";
+        String sql = "SELECT * FROM Venda_has_Produto";
 
         try {
             statement = connection.createStatement();
@@ -48,7 +48,6 @@ public class Venda_has_ProdutoDB extends Database {
                 System.out.println("SN do produto = " + venda_has_produtoTemp.getProduto_SNProduto());
                 System.out.println("Qtd de produtos = " + venda_has_produtoTemp.getQtdProdutos());
                 System.out.println("------------");
-                //.add(cursoTemp);
             }
         } catch (SQLException e) {
             System.out.println("Erro " + e.getMessage());

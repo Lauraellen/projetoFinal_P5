@@ -1,6 +1,7 @@
 package br.inatel.projeto.database;
 
 import br.inatel.projeto.Venda;
+import br.inatel.projeto.Venda_has_Produto;
 
 import java.sql.SQLException;
 
@@ -33,4 +34,5 @@ public class VendaDB extends Database {
         }
         return check;
     }
+
 }

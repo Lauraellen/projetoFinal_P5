@@ -14,7 +14,7 @@ public class ProdutoDB extends Database {
             preparedStatement.setString(2, produto.getNomeProduto());
             preparedStatement.setFloat(3, produto.getValorCompra());
             preparedStatement.setFloat(4, produto.getValorVenda());
-            preparedStatement.setString(4, produto.getForncedor_cnpj());
+            preparedStatement.setString(5, produto.getForncedor_cnpj());
 
             preparedStatement.execute();
             check = true;
