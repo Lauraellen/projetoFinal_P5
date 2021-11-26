@@ -14,10 +14,7 @@ public class Principal {
         CompradorDB compradorDB = new CompradorDB();
         FornecedorDB fornecedorDB = new FornecedorDB();
 
-        Cliente cliente1 = new Cliente();
-        cliente1.setCpf("123");
-        cliente1.setNome("Daiane");
-        cliente1.setTelefone("35999533564");
+      /*  Cliente cliente1 = new Cliente("458", "Laura", "35988510483");
 
         Vendedor vendedor1 = new Vendedor("456", "Laura", "3599475684", "Vendas",5000, "456",5, 100);
 
@@ -35,19 +32,21 @@ public class Principal {
         produto1.setNomeProduto("Camisa G");
         produto1.setForncedor_cnpj("987");
         produto1.setValorCompra(50);
-        produto1.setValorVenda(100);
+        produto1.setValorVenda(100);*/
 
-        Venda venda1 = new Venda("123", "456");
+     //   Venda venda1 = new Venda("123", "456");
 
-        Venda_has_Produto venda_has_produto1 = new Venda_has_Produto(1, 1235456,3);
+     //   Venda_has_Produto venda_has_produto1 = new Venda_has_Produto(1, 1235456,3);
 
-        //clienteDB.insertCliente(cliente1);
-        //vendedorDB.insertVendedor(vendedor1);
-        //compradorDB.insertComprador(comprador1);
-        //fornecedorDB.insertFornecedor(fornecedor1);
-        //produtoDB.insertProduto(produto1);
-        //vendaDB.insertVenda(venda1);
-        //venda_has_produtoDB.insertVenda_Produto(venda_has_produto1);
-        venda_has_produtoDB.researchVenda_Produto();
+     //   clienteDB.insertCliente(cliente1);
+      //  vendedorDB.insertVendedor(vendedor1);
+       // compradorDB.insertComprador(comprador1);
+       // fornecedorDB.insertFornecedor(fornecedor1);
+       // produtoDB.insertProduto(produto1);
+       // vendaDB.insertVenda(venda1);
+       // venda_has_produtoDB.insertVenda_Produto(venda_has_produto1);
+
+
+
     }
 }

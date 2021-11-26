@@ -6,6 +6,15 @@ public class Cliente {
     private String nome;
     private String telefone;
 
+    public Cliente(String cpf, String nome, String telefone) {
+        this.cpf = cpf;
+        this.nome = nome;
+        this.telefone = telefone;
+    }
+
+    public Cliente() {
+    }
+
     public String getCpf() {
         return cpf;
     }
