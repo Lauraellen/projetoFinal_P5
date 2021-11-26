@@ -65,7 +65,38 @@ public class ClienteDB extends Database {
         return clientes;
     }
 
-    public boolean updateCliente (String cpf, String nome, String telefone) {
+    public boolean researchClienteByCpf( String cpf) {
+
+        connect();
+        Cliente cliente  = new Cliente();
+        boolean clientExist = false;
+        String sql = "SELECT * FROM Cliente WHERE cpf = " + cpf;
+
+        try {
+            statement = connection.createStatement();
+            result = statement.executeQuery(sql);
+
+            if(result != null && result.next()){
+                cliente = new Cliente(result.getString("cpf"), result.getString("nome"), result.getString("telefone"));
+                clientExist = true;
+                System.out.println(clientExist);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro " + e.getMessage());
+        } finally {
+            try {
+                connection.close();
+                statement.close();
+                result.close();
+            } catch (SQLException e) {
+                System.out.println("Erro ao finalizar " + e.getMessage());
+            }
+        }
+        return clientExist;
+    }
+
+    public boolean updateCliente (String cpf, String telefone) {
 
         connect();
         String sql = "Update cliente set telefone=? WHERE cpf=?";
