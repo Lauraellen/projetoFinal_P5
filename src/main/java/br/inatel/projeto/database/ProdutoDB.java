@@ -1,7 +1,10 @@
 package br.inatel.projeto.database;
 import br.inatel.projeto.Produto;
+import br.inatel.projeto.Venda_has_Produto;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ProdutoDB extends Database {
 
@@ -30,5 +33,35 @@ public class ProdutoDB extends Database {
             }
         }
         return check;
+    }
+
+    public float research_ValorProduto(int SN_produto) {
+
+        float aux = 0;
+        connect();
+        String sql = "SELECT valorVenda FROM Produto WHERE SN_produto = " + SN_produto;
+
+        try {
+
+            statement = connection.createStatement();
+            result = statement.executeQuery(sql);
+
+            if(result != null && result.next()){
+                aux = result.getFloat("valorVenda");
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println("Erro " + e.getMessage());
+        } finally {
+            try {
+                connection.close();
+                statement.close();
+                result.close();
+            } catch (SQLException e) {
+                System.out.println("Erro ao finalizar " + e.getMessage());
+            }
+        }
+        return aux;
     }
 }

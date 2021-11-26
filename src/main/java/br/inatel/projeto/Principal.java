@@ -41,13 +41,13 @@ public class Principal {
 
         Venda_has_Produto venda_has_produto1 = new Venda_has_Produto(1, 1235456,3);
 
-        //clienteDB.insertCliente(cliente1);
-        //vendedorDB.insertVendedor(vendedor1);
-        //compradorDB.insertComprador(comprador1);
-        //fornecedorDB.insertFornecedor(fornecedor1);
-        //produtoDB.insertProduto(produto1);
-        //vendaDB.insertVenda(venda1);
-        //venda_has_produtoDB.insertVenda_Produto(venda_has_produto1);
-        venda_has_produtoDB.researchVenda_Produto();
+        clienteDB.insertCliente(cliente1);
+        vendedorDB.insertVendedor(vendedor1);
+        compradorDB.insertComprador(comprador1);
+        fornecedorDB.insertFornecedor(fornecedor1);
+        produtoDB.insertProduto(produto1);
+        vendaDB.insertVenda(venda1);
+        venda_has_produtoDB.insertVenda_Produto(venda_has_produto1);
+        //venda_has_produtoDB.researchVenda_Produto();
     }
 }
