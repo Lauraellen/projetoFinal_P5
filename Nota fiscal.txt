@@ -1,0 +1,5 @@
+Venda 1
+CPF do cliente: 123
+CPF do vendedor: 456
+Valor total da venda: 300.0
+Quantidade de produtos: 3

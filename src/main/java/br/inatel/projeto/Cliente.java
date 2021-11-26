@@ -6,6 +6,7 @@ public class Cliente {
     private String nome;
     private String telefone;
 
+
     public String getCpf() {
         return cpf;
     }

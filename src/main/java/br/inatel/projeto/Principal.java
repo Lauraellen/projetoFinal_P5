@@ -48,6 +48,12 @@ public class Principal {
         produtoDB.insertProduto(produto1);
         vendaDB.insertVenda(venda1);
         venda_has_produtoDB.insertVenda_Produto(venda_has_produto1);
+        venda1.setValorVenda(vendaDB.research_ValorVenda(venda1.getIdVenda()));
+        venda1.setQtdProdutos(vendaDB.research_qtdProdutos(venda1.getIdVenda()));
+
+        Arquivo arquivo = new Arquivo();
+        arquivo.escrever(venda1);
         //venda_has_produtoDB.researchVenda_Produto();
+
     }
 }

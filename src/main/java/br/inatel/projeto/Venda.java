@@ -1,6 +1,5 @@
 package br.inatel.projeto;
 
-import br.inatel.projeto.Produto;
 
 public class Venda {
 
@@ -11,6 +10,7 @@ public class Venda {
     private int qtdProdutos;
     private float valorVenda;
 
+
     public Venda(String Cliente_cpf, String Vendedor_Funcionario_cpf){
         idVenda = contador;
         contador++;
@@ -19,6 +19,7 @@ public class Venda {
         qtdProdutos = 0;
         valorVenda = 0;
     }
+
 
     public int getIdVenda() {
         return idVenda;
@@ -38,5 +39,13 @@ public class Venda {
 
     public float getValorVenda() {
         return valorVenda;
+    }
+
+    public void setValorVenda(float valorVenda) {
+        this.valorVenda = valorVenda;
+    }
+
+    public void setQtdProdutos(int qtdProdutos) {
+        this.qtdProdutos = qtdProdutos;
     }
 }
