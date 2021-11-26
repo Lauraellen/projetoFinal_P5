@@ -48,5 +48,16 @@ public class Principal {
 
 
 
+<<<<<<< HEAD
+=======
+        clienteDB.insertCliente(cliente1);
+        vendedorDB.insertVendedor(vendedor1);
+        compradorDB.insertComprador(comprador1);
+        fornecedorDB.insertFornecedor(fornecedor1);
+        produtoDB.insertProduto(produto1);
+        vendaDB.insertVenda(venda1);
+        venda_has_produtoDB.insertVenda_Produto(venda_has_produto1);
+        //venda_has_produtoDB.researchVenda_Produto();
+>>>>>>> 015d4ec5da0eb306a5ecaeb924cb7fc2f1fc42c9
     }
 }

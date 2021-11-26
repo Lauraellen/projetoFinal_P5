@@ -1,5 +1,6 @@
 package br.inatel.projeto.database;
 
+import br.inatel.projeto.Venda;
 import br.inatel.projeto.Venda_has_Produto;
 
 import java.sql.SQLException;
@@ -11,6 +12,7 @@ public class Venda_has_ProdutoDB extends Database {
 
         connect();
         String sql = "INSERT INTO Venda_has_Produto (Venda_idVenda, Produto_SNProduto, qtdProdutos) VALUES (?, ? ,?)";
+        VendaDB vendaDB = new VendaDB();
 
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -30,6 +32,7 @@ public class Venda_has_ProdutoDB extends Database {
                 System.out.println("Erro ao finalizar " + e.getMessage());
             }
         }
+        vendaDB.updateVenda(venda_has_produto.getVenda_idVenda(),venda_has_produto.getProduto_SNProduto(),venda_has_produto.getQtdProdutos());
         return check;
     }
 
