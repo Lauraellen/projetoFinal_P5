@@ -6,16 +6,16 @@ public class Vendedor extends Funcionario{
     private int metaMes;
     private float comissao;
 
-    public Vendedor (String cpf, String nome, String telefone, String setor, float salario, String gestor_cpf, int metaMes, float comissao) {
+    public Vendedor (String cpf, String nome, String telefone, String gestor_cpf) {
         this.cpf = cpf;
         this.nome = nome;
         this.telefone = telefone;
-        this.setor = setor;
-        this.salario = salario;
         this.gestor_cpf = gestor_cpf;
-        this.metaMes = metaMes;
-        this.comissao = comissao;
+        salario = 2000;
+        metaMes = 100;
+        comissao = 100;
         numVendas = 0;
+        setor = "Vendas";
     }
 
     public int getNumVendas() {
