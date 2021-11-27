@@ -17,6 +17,7 @@ public class Principal {
         CompradorDB compradorDB = new CompradorDB();
         FornecedorDB fornecedorDB = new FornecedorDB();
 
+        /*
         if (clienteDB.researchClienteByCpf("123")) {
             System.out.println("Cliente existe");
             clienteDB.updateCliente("123", "988214789");
@@ -24,10 +25,11 @@ public class Principal {
         } else {
             System.out.println("Cliente não existe");
         }
+         */
 
         int opcao1, opcao2, opcao3, opcao4, opcao5, opcao6;
 
-        for (;;) {
+        for (; ; ) {
 
             System.out.println("Informe qual portal deseja ter acesso: ");
             System.out.println("1 - Portal do cliente");
@@ -41,7 +43,7 @@ public class Principal {
                 case 1:
 
                     boolean pag1 = true;
-                    while(pag1) {
+                    while (pag1) {
 
                         System.out.println("Informe o que você deseja fazer: ");
                         System.out.println("1 - Ver meus pedidos");
@@ -51,22 +53,27 @@ public class Principal {
                         switch (opcao2) {
 
                             case 1:
+
                                 //
                                 //
                                 //
+
                                 break;
 
                             case 2:
                                 pag1 = false;
+                                break;
                         }
 
                     }
+                    break;
 
                 //portal do funcionario
                 case 2:
 
+
                     boolean pag2 = true;
-                    while(pag2){
+                    while (pag2) {
 
                         System.out.println("Informe o que você deseja fazer: ");
                         System.out.println("1 - Acessar o portal de vendedor");
@@ -78,8 +85,9 @@ public class Principal {
 
                             //portal do vendedor
                             case 1:
+
                                 boolean pag3 = true;
-                                while(pag3){
+                                while (pag3) {
 
                                     System.out.println("Informe o que você deseja fazer: ");
                                     System.out.println("1 - Cadastrar um novo cliente");
@@ -87,18 +95,19 @@ public class Principal {
                                     System.out.println("3 - Voltar a pagina anterior");
                                     opcao4 = input.nextInt();
 
-                                    switch (opcao4){
+                                    switch (opcao4) {
 
                                         //cadastrar um cliente
                                         case 1:
 
-                                            String cpf;
-                                            String nome;
-                                            String telefone;
+                                            String cpf = null;
+                                            String nome = null;
+                                            String telefone = null;
 
                                             System.out.println("Informe o cpf: ");
                                             cpf = input.next();
-                                            System.out.println("Informe o nome completo: ");
+                                            System.out.println("Informe o nome: ");
+                                            //não ta dando certo de pegar nome com espaço
                                             nome = input.next();
                                             System.out.println("Informe o numero de telefone: ");
                                             telefone = input.next();
@@ -112,6 +121,10 @@ public class Principal {
                                         //realizar uma venda
                                         case 2:
 
+                                            System.out.println("realizar venda");
+                                            break;
+
+                                            /*
                                             String Cliente_cpf;
                                             String Vendedor_Funcionario_cpf;
 
@@ -159,26 +172,35 @@ public class Principal {
 
                                             }
 
+                                        */
+
                                         //voltar a pagina anterior
                                         case 3:
                                             pag3 = false;
                                             break;
-
-                                     break;
                                     }
-
-
-                                    case 2:
-
-
-                                    case 3:
-                                        break;
                                 }
+
                                 break;
+
+                            case 2:
+                                System.out.println("portal do comprador");
+                                break;
+
+                            case 3:
+                                pag2 = false;
+                                break;
+
+                        }
                     }
+                    break;
 
                 case 3:
 
+                    System.out.println("portal do dono");
+                    break;
+
+                    /*
                     System.out.println("Informe o que você deseja fazer: ");
                     System.out.println("1 - Cadastrar um novo funcionario");
                     System.out.println("2 - Sair do menu");
@@ -207,10 +229,9 @@ public class Principal {
                         case 2:
                             menu = false;
                             break;
-                    }
 
+                     */
             }
-
         }
     }
 }
