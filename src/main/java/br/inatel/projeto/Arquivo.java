@@ -15,7 +15,7 @@ public class Arquivo {
         String linhaEscrever;
 
         try {
-            os = new FileOutputStream("Nota fiscal.txt", true); //salvar no arquivo
+            os = new FileOutputStream("Nota fiscal venda" + v1.getIdVenda() + ".txt", true); //salvar no arquivo
             osr = new OutputStreamWriter(os); //conversor
             bw = new BufferedWriter(osr); //o q vai digitar
 
