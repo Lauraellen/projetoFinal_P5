@@ -7,6 +7,7 @@ public class Principal {
 
     public static void main(String[] args) {
 
+
         Scanner input = new Scanner(System.in);
 
         VendaDB vendaDB = new VendaDB();
@@ -55,9 +56,12 @@ public class Principal {
 
                             case 1:
 
-                                //
-                                //
-                                //
+                                String cpf = null;
+                                System.out.println("Informe o seu cpf: ");
+                                cpf = input.next();
+
+                                clienteDB.researchClienteByCpf(cpf);
+                                vendaDB.research_vendaByCpf(cpf);
 
                                 break;
 

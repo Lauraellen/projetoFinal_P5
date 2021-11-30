@@ -10,6 +10,17 @@ public class Venda {
     private int qtdProdutos;
     private float valorVenda;
 
+    public Venda() {
+    }
+
+
+    public Venda(int IdVenda, String cliente_cpf, String vendedor_Funcionario_cpf, int qtdProdutos, float valorVenda) {
+        idVenda = IdVenda;
+        Cliente_cpf = cliente_cpf;
+        Vendedor_Funcionario_cpf = vendedor_Funcionario_cpf;
+        this.qtdProdutos = qtdProdutos;
+        this.valorVenda = valorVenda;
+    }
 
     public Venda(String Cliente_cpf, String Vendedor_Funcionario_cpf){
         idVenda = contador;
@@ -19,7 +30,6 @@ public class Venda {
         qtdProdutos = 0;
         valorVenda = 0;
     }
-
 
     public int getIdVenda() {
         return idVenda;

@@ -78,8 +78,8 @@ public class ClienteDB extends Database {
 
             if(result != null && result.next()){
                 cliente = new Cliente(result.getString("cpf"), result.getString("nome"), result.getString("telefone"));
-                clientExist = true;
-                System.out.println(clientExist);
+                System.out.println("Olá " + result.getString("nome") + "!");
+                System.out.println("Visualize suas compras:");
             }
 
         } catch (SQLException e) {
