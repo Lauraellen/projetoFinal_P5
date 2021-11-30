@@ -124,7 +124,7 @@ public class ClienteDB extends Database {
     public boolean deleteCliente (String cpf) {
 
         connect();
-        String sql = "DELETE FROM cliente set WHERE cpf=?";
+        String sql = "DELETE FROM cliente WHERE cpf=?";
 
         try {
             preparedStatement = connection.prepareStatement(sql);

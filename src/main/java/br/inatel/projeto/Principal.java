@@ -97,7 +97,9 @@ public class Principal {
                                     System.out.println("Informe o que você deseja fazer: ");
                                     System.out.println("1 - Cadastrar um novo cliente");
                                     System.out.println("2 - Realizar uma venda");
-                                    System.out.println("3 - Voltar a pagina anterior");
+                                    System.out.println("3 - Excluir um cliente do sistema");
+                                    System.out.println("4 - Atualizar os dados de um cliente");
+                                    System.out.println("5 - Voltar a pagina anterior");
                                     opcao4 = input.nextInt();
 
                                     switch (opcao4) {
@@ -173,8 +175,37 @@ public class Principal {
                                             }
                                             break;
 
-                                        //voltar a pagina anterior
+                                        //excluir um cliente do sistema
                                         case 3:
+
+                                            String cpf_cliente;
+
+                                            System.out.println("Informe o cpf do cliente: ");
+                                            cpf_cliente = input.next();
+
+                                            clienteDB.deleteCliente(cpf_cliente);
+                                            System.out.println("Cliente excluído com sucesso!");
+                                            break;
+
+                                        //atualizar o telefone de um cliente
+                                        case 4:
+
+                                            String cpf_Cliente;
+                                            String telefoneAtualizado;
+
+                                            System.out.println("Informe o cpf do cliente que deseja atualizar: ");
+                                            cpf_Cliente = input.next();
+
+
+                                            System.out.println("Informe o novo número de telefone:");
+                                            telefoneAtualizado = input.next();
+                                            clienteDB.updateCliente(cpf_Cliente, telefoneAtualizado);
+                                            System.out.println("Número de telefone atualizado com sucesso!");
+                                            break;
+
+
+                                        //voltar a pagina anterior
+                                        case 5:
                                             pag3 = false;
                                             break;
                                     }
