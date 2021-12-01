@@ -399,7 +399,7 @@ public class Principal {
                                         cpfFunc = input.next();
                                         pagamento = vendedorDB.research_salario(cpfFunc);
                                         contaBancariaDB.updateSalario(cpfFunc, pagamento);
-                                       // metaBatida = ;
+                                        vendedorDB.research_meta(cpfFunc);
                                         System.out.println("Pagamento realizado com sucesso");
                                         break;
 

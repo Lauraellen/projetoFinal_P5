@@ -128,4 +128,73 @@ public class VendedorDB extends Database {
         return check;
     }
 
+    public void research_meta(String cpf) {
+
+        int metaMes = 0;
+        int numVendas = 0;
+
+        connect();
+
+        String sql = "SELECT metaMes FROM Vendedor WHERE Funcionario_cpf = " + cpf;
+
+        try {
+
+            statement = connection.createStatement();
+            result = statement.executeQuery(sql);
+            if (result != null && result.next()) {
+                metaMes = result.getInt("metaMes");
+            }
+
+            numVendas = research_numVendas(cpf);
+            if(numVendas >= metaMes)
+                updateMeta(cpf);
+
+        }catch (SQLException e) {
+            System.out.println("Erro ao finalizar " + e.getMessage());
+        }
+    }
+
+    public int research_numVendas(String cpf) {
+
+        connect();
+        int aux = 0;
+
+        String sql1 = "SELECT numVendas FROM Vendedor WHERE Funcionario_cpf = " + cpf;
+
+        try {
+
+            statement = connection.createStatement();
+            result = statement.executeQuery(sql1);
+            if (result != null && result.next()) {
+                aux = result.getInt("numVendas");
+            }
+
+        }catch (SQLException e) {
+            System.out.println("Erro ao finalizar " + e.getMessage());
+        }
+        return aux;
+    }
+
+    public boolean updateMeta(String cpf){
+        connect();
+        String sql = "UPDATE Vendedor SET metaMes = metaMes + 5 WHERE Funcionario_cpf = ?";
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, cpf);
+            preparedStatement.execute();
+            check = true;
+        }catch (SQLException e){
+            System.out.println("Erro de operação: " + e.getMessage());
+            check = false;
+        }finally {
+            try {
+                connection.close();
+                preparedStatement.close();
+            }catch (SQLException e) {
+                System.out.println("Erro ao fechar a conexão: " + e.getMessage());
+            }
+        }
+        return check;
+    }
+
 }
