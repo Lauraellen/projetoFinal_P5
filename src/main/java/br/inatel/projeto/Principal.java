@@ -140,6 +140,7 @@ public class Principal {
                                                 System.out.println("Informe seu cpf: ");
                                                 Vendedor_Funcionario_cpf = input.next();
 
+                                                System.out.println(Vendedor_Funcionario_cpf);
                                                 if(vendedorDB.researchVendedorByCpf(Vendedor_Funcionario_cpf)) {
                                                     Venda venda = new Venda(Cliente_cpf, Vendedor_Funcionario_cpf);
                                                     vendaDB.insertVenda(venda);

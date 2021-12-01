@@ -48,15 +48,14 @@ public class VendedorDB extends Database {
         connect();
         Vendedor vendedor  = new Vendedor();
         boolean vendedorExist = false;
-        String sql = "SELECT * FROM vendedor WHERE cpf = " + cpf;
+        String sql = "SELECT * FROM vendedor WHERE Funcionario_cpf = " + cpf;
 
         try {
             statement = connection.createStatement();
             result = statement.executeQuery(sql);
 
             if(result != null && result.next()){
-                vendedor = new Vendedor(result.getString("cpf"), result.getString("nome"), result.getString("telefone"),
-                        result.getString("gestor_cpf"));
+                vendedor = new Vendedor(result.getString("Funcionario_cpf"));
                 vendedorExist = true;
             }
 

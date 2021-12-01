@@ -1,0 +1,5 @@
+Venda 1
+CPF do cliente: 10516314670
+CPF do vendedor: 89456
+Valor total da venda: 0.0
+Quantidade de produtos: 0
