@@ -305,6 +305,17 @@ public class Principal {
 
                                         case 3:
 
+                                            int SN1;
+                                            int qtd;
+
+                                            System.out.println("Informe o SN do produto que deseja comprar: ");
+                                            SN1 = input.nextInt();
+                                            input.nextLine();
+                                            System.out.println("Informe a quantidade de produtos que deseja comprar: ");
+                                            qtd = input.nextInt();
+                                            produtoDB.updateEstoqueCompra(SN1, qtd);
+                                            System.out.println("Compra realizada");
+
                                             break;
 
                                         case 4:
