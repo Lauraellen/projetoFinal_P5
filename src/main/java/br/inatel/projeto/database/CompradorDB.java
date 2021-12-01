@@ -44,15 +44,14 @@ public class CompradorDB extends Database {
         connect();
         Comprador comprador  = new Comprador();
         boolean compradorExist = false;
-        String sql = "SELECT * FROM comprador WHERE cpf = " + cpf;
+        String sql = "SELECT * FROM comprador WHERE Funcionario_cpf = " + cpf;
 
         try {
             statement = connection.createStatement();
             result = statement.executeQuery(sql);
 
             if(result != null && result.next()){
-                comprador = new Comprador(result.getString("cpf"), result.getString("nome"), result.getString("telefone"),
-                        result.getString("gestor_cpf"), result.getString("paisVenda"));
+                comprador = new Comprador(result.getString("Funcionario_cpf"));
                 compradorExist = true;
             }
 

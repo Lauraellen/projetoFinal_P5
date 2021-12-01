@@ -12,6 +12,10 @@ public class Comprador extends Funcionario{
         salario = 2500;
     }
 
+    public Comprador (String cpf){
+        this.cpf = cpf;
+    }
+
     public Comprador() {
     }
 

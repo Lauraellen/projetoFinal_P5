@@ -131,7 +131,6 @@ public class Principal {
                                                 System.out.println("Informe seu cpf: ");
                                                 Vendedor_Funcionario_cpf = input.next();
 
-                                                System.out.println(Vendedor_Funcionario_cpf);
                                                 if(vendedorDB.researchVendedorByCpf(Vendedor_Funcionario_cpf)) {
                                                     Venda venda = new Venda(Cliente_cpf, Vendedor_Funcionario_cpf);
                                                     vendaDB.insertVenda(venda);
@@ -156,6 +155,8 @@ public class Principal {
 
                                                                 Venda_has_Produto venda_has_produto = new Venda_has_Produto(venda.getIdVenda(), Produto_SNProduto, qtdProdutos);
                                                                 venda_has_produtoDB.insertVenda_Produto(venda_has_produto);
+                                                                venda.setQtdProdutos(venda.getQtdProdutos() + qtdProdutos);
+                                                                venda.setValorVenda(venda.getValorVenda() + (produtoDB.research_ValorProduto(Produto_SNProduto) * qtdProdutos));
                                                                 break;
 
                                                             case 2:
@@ -248,14 +249,14 @@ public class Principal {
                                             System.out.println("Informe seu cpf: ");
                                             comprador_cpf = input.next();
 
-                                            if ( !compradorDB.researchCompradorByCpf(comprador_cpf)) {
+                                            if ( compradorDB.researchCompradorByCpf(comprador_cpf)) {
                                                 Fornecedor fornecedor1 = new Fornecedor(cnpj, nome, telefone, comprador_cpf);
                                                 fornecedorDB.insertFornecedor(fornecedor1);
 
                                                 System.out.println("Fornecedor cadastrado com sucesso");
                                                 break;
                                             } else {
-                                                System.out.println("Não é possivel cadastrar esse fornecedor." +
+                                                System.out.println("Não é possivel cadastrar esse fornecedor. " +
                                                         "Esse cpf do comprador não existe");
                                                 break;
                                             }
