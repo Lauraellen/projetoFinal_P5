@@ -21,6 +21,11 @@ public class Vendedor extends Funcionario{
     public Vendedor() {
     }
 
+    public Vendedor (String cpf) {
+        this.cpf = cpf;
+    }
+
+
     public int getNumVendas() {
         return numVendas;
     }
