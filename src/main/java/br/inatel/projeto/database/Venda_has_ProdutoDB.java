@@ -21,6 +21,9 @@ public class Venda_has_ProdutoDB extends Database {
             preparedStatement.setInt(3, venda_has_produto.getQtdProdutos());
             preparedStatement.execute();
             check = true;
+
+            vendaDB.updateVenda(venda_has_produto.getVenda_idVenda(),venda_has_produto.getProduto_SNProduto(),venda_has_produto.getQtdProdutos());
+
         } catch (SQLException e) {
             System.out.println("Erro " + e.getMessage());
             check = false;
@@ -32,7 +35,7 @@ public class Venda_has_ProdutoDB extends Database {
                 System.out.println("Erro ao finalizar " + e.getMessage());
             }
         }
-        vendaDB.updateVenda(venda_has_produto.getVenda_idVenda(),venda_has_produto.getProduto_SNProduto(),venda_has_produto.getQtdProdutos());
+
         return check;
     }
 

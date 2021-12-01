@@ -19,15 +19,6 @@ public class Principal {
         FornecedorDB fornecedorDB = new FornecedorDB();
         ContaBancariaDB contaBancariaDB = new ContaBancariaDB();
 
-        /*
-        if (clienteDB.researchClienteByCpf("123")) {
-            System.out.println("Cliente existe");
-            clienteDB.updateCliente("123", "988214789");
-            System.out.println("Cliente atualizado");
-        } else {
-            System.out.println("Cliente não existe");
-        }
-         */
 
         int opcao1, opcao2, opcao3, opcao4, opcao5, opcao6, opcao7, opcao8, opcao11;
 
@@ -403,10 +394,12 @@ public class Principal {
                                 switch (opcao11){
 
                                     case 1:
+                                        boolean metaBatida = false;
                                         System.out.println("Informe o cpf do funcionario: ");
                                         cpfFunc = input.next();
                                         pagamento = vendedorDB.research_salario(cpfFunc);
                                         contaBancariaDB.updateSalario(cpfFunc, pagamento);
+                                       // metaBatida = ;
                                         System.out.println("Pagamento realizado com sucesso");
                                         break;
 
