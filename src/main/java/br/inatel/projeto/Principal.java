@@ -135,26 +135,37 @@ public class Principal {
                                                 if(vendedorDB.researchVendedorByCpf(Vendedor_Funcionario_cpf)) {
                                                     Venda venda = new Venda(Cliente_cpf, Vendedor_Funcionario_cpf);
                                                     vendaDB.insertVenda(venda);
+
+                                                    int Produto_SNProduto;
+                                                    int qtdProdutos;
+
+                                                    System.out.println("Informe o SN do produto a ser vendido: ");
+                                                    Produto_SNProduto = input.nextInt();
+                                                    System.out.println("Informe a quantidade de produtos: ");
+                                                    qtdProdutos = input.nextInt();
+
+                                                    Venda_has_Produto venda_has_produto = new Venda_has_Produto(venda.getIdVenda(), Produto_SNProduto, qtdProdutos);
+                                                    venda_has_produtoDB.insertVenda_Produto(venda_has_produto);
+                                                    venda.setQtdProdutos(venda.getQtdProdutos() + qtdProdutos);
+                                                    venda.setValorVenda(venda.getValorVenda() + (produtoDB.research_ValorProduto(Produto_SNProduto) * qtdProdutos));
+
                                                     System.out.println("Venda cadastrada");
 
                                                     boolean pag7 = true;
                                                     while (pag7) {
-                                                        System.out.println("1 - Insira produtos a nova venda");
+                                                        System.out.println("1 - Insira mais produtos a nova venda");
                                                         System.out.println("2 - Fechar venda e gerar nota fiscal");
                                                         opcao6 = input.nextInt();
 
                                                         switch (opcao6) {
 
                                                             case 1:
-                                                                int Produto_SNProduto;
-                                                                int qtdProdutos;
 
                                                                 System.out.println("Informe o SN do produto: ");
                                                                 Produto_SNProduto = input.nextInt();
                                                                 System.out.println("Informe a quantidade de produtos: ");
                                                                 qtdProdutos = input.nextInt();
 
-                                                                Venda_has_Produto venda_has_produto = new Venda_has_Produto(venda.getIdVenda(), Produto_SNProduto, qtdProdutos);
                                                                 venda_has_produtoDB.insertVenda_Produto(venda_has_produto);
                                                                 venda.setQtdProdutos(venda.getQtdProdutos() + qtdProdutos);
                                                                 venda.setValorVenda(venda.getValorVenda() + (produtoDB.research_ValorProduto(Produto_SNProduto) * qtdProdutos));

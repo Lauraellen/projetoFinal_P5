@@ -8,3 +8,8 @@ CPF do cliente: 789
 CPF do vendedor: 123
 Valor total da venda: 450.0
 Quantidade de produtos: 3
+Venda 1
+CPF do cliente: 789
+CPF do vendedor: 123
+Valor total da venda: 600.0
+Quantidade de produtos: 3
