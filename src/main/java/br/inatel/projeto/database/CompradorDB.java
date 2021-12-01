@@ -71,4 +71,25 @@ public class CompradorDB extends Database {
         }
         return compradorExist;
     }
+
+    public float research_salario(String cpf) {
+        float aux = 0;
+        connect();
+
+        String sql = "SELECT salario FROM Funcionario WHERE cpf = " + cpf;
+
+        try {
+
+            statement = connection.createStatement();
+            result = statement.executeQuery(sql);
+            if (result != null && result.next()) {
+                aux = result.getInt("salario");
+            }
+
+        }catch (SQLException e) {
+            System.out.println("Erro ao finalizar " + e.getMessage());
+        }
+        return aux;
+    }
+
 }
