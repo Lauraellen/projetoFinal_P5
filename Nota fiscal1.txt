@@ -1,5 +1,0 @@
-Venda 1
-CPF do cliente: 6767
-CPF do vendedor: 14986358650
-Valor total da venda: 0.0
-Quantidade de produtos: 0

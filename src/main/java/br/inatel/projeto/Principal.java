@@ -29,9 +29,9 @@ public class Principal {
         }
          */
 
-        int opcao1, opcao2, opcao3, opcao4, opcao5, opcao6, opcao7, opcao8;
+        int opcao1, opcao2, opcao3, opcao4, opcao5, opcao6, opcao7, opcao8, opcao11;
 
-        for (; ; ) {
+        for (; ;) {
 
             System.out.println("Informe qual portal deseja ter acesso: ");
             System.out.println("1 - Portal do cliente");
@@ -333,7 +333,8 @@ public class Principal {
                     while (pag4) {
                         System.out.println("Informe o que você deseja fazer: ");
                         System.out.println("1 - Cadastrar um novo funcionario");
-                        System.out.println("2 - Voltar ao menu principal");
+                        System.out.println("2 - Pagar um funcionario");
+                        System.out.println("3 - Voltar ao menu principal");
                         opcao5 = input.nextInt();
 
                         switch (opcao5) {
@@ -398,6 +399,35 @@ public class Principal {
                                 break;
 
                             case 2:
+                                String cpfFunc;
+                                float pagamento;
+                                System.out.println("Para qual tipo de funcionario deseja realizar o pagamento: ");
+                                System.out.println("1 - Vendedor");
+                                System.out.println("2 - Comprador");
+                                opcao11 = input.nextInt();
+
+                                switch (opcao11){
+
+                                    case 1:
+                                        System.out.println("Informe o cpf do funcionario: ");
+                                        cpfFunc = input.next();
+                                        pagamento = vendedorDB.research_salario(cpfFunc);
+                                        contaBancariaDB.updateSalario(cpfFunc, pagamento);
+                                        System.out.println("Pagamento realizado com sucesso");
+                                        break;
+
+                                    case 2:
+                                        System.out.println("Informe o cpf do funcionario: ");
+                                        cpfFunc = input.next();
+                                        pagamento = compradorDB.research_salario(cpfFunc);
+                                        contaBancariaDB.updateSalario(cpfFunc, pagamento);
+                                        System.out.println("Pagamento realizado com sucesso");
+                                        break;
+
+                                }
+                                break;
+
+                            case 3:
                                 pag4 = false;
                                 break;
                         }

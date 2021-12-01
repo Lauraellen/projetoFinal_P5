@@ -14,6 +14,7 @@ public class VendaDB extends Database {
 
         connect();
         String sql = "INSERT INTO Venda (idVenda, Cliente_cpf, Vendedor_Funcionario_cpf, qtdProdutos, valorVenda) VALUES (?, ? ,?, ?, ?)";
+        VendedorDB vendedorDB = new VendedorDB();
 
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -23,6 +24,8 @@ public class VendaDB extends Database {
             preparedStatement.setInt(4, venda.getQtdProdutos());
             preparedStatement.setFloat(5, venda.getValorVenda());
             preparedStatement.execute();
+            vendedorDB.updateVenda(venda.getVendedor_Funcionario_cpf());
+
             check = true;
         } catch (SQLException e) {
             System.out.println("Erro " + e.getMessage());
