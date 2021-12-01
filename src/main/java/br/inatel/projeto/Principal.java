@@ -60,7 +60,6 @@ public class Principal {
                                 System.out.println("Informe o seu cpf: ");
                                 cpf = input.next();
 
-                                clienteDB.researchClienteByCpf(cpf);
                                 vendaDB.research_vendaByCpf(cpf);
 
                                 break;
@@ -113,17 +112,19 @@ public class Principal {
 
                                             System.out.println("Informe o cpf: ");
                                             cpf = input.next();
-                                            System.out.println("Informe o nome: ");
-                                            //não ta dando certo de pegar nome com espaço
-                                            nome = input.next();
-                                            System.out.println("Informe o numero de telefone: ");
-                                            telefone = input.next();
+                                            input.nextLine();
 
-
-                                            Cliente cliente = new Cliente(cpf, nome, telefone);
-                                            clienteDB.insertCliente(cliente);
-
-                                            System.out.println("Cliente cadastrado");
+                                            if(clienteDB.researchClienteByCpf(cpf)) {
+                                                System.out.println("Esse cliente já está cadastrado em nosso sistema!");
+                                            } else {
+                                                System.out.println("Informe o nome: ");
+                                                nome = input.nextLine();
+                                                System.out.println("Informe o numero de telefone: ");
+                                                telefone = input.next();
+                                                Cliente cliente = new Cliente(cpf, nome, telefone);
+                                                clienteDB.insertCliente(cliente);
+                                                System.out.println("Cliente cadastrado");
+                                            }
                                             break;
 
                                         //realizar uma venda
@@ -222,7 +223,8 @@ public class Principal {
                                     System.out.println("1 - Cadastrar um novo fornecedor");
                                     System.out.println("2 - Cadastrar um novo produto");
                                     System.out.println("3 - Realizar uma compra");
-                                    System.out.println("4 - Voltar a pagina anterior");
+                                    System.out.println("4 - Realizar uma venda");
+                                    System.out.println("5 - Voltar a pagina anterior");
                                     opcao8 = input.nextInt();
 
                                     switch (opcao8){
@@ -280,8 +282,11 @@ public class Principal {
                                         case 3:
 
                                             break;
-
                                         case 4:
+
+                                            break;
+
+                                        case 5:
                                             pag5 = false;
                                             break;
                                     }

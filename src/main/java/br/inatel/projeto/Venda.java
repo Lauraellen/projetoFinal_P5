@@ -1,6 +1,8 @@
 package br.inatel.projeto;
 
 
+import br.inatel.projeto.database.ProdutoDB;
+
 public class Venda {
 
     private static int contador = 1;
@@ -9,6 +11,14 @@ public class Venda {
     private String Vendedor_Funcionario_cpf;
     private int qtdProdutos;
     private float valorVenda;
+
+    public Venda(int idVenda, String cliente_cpf, String vendedor_Funcionario_cpf, int qtdProdutos, float valorVenda, String idProduto) {
+        this.idVenda = idVenda;
+        Cliente_cpf = cliente_cpf;
+        Vendedor_Funcionario_cpf = vendedor_Funcionario_cpf;
+        this.qtdProdutos = qtdProdutos;
+        this.valorVenda = valorVenda;
+    }
 
     public Venda() {
     }
