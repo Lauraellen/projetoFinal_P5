@@ -51,7 +51,7 @@ public class Principal {
                                 System.out.println("Informe o seu cpf: ");
                                 cpf = input.next();
 
-                                vendaDB.research_vendaByCpf(cpf);
+                                clienteDB.researchCliente(cpf);
 
                                 break;
 
@@ -89,7 +89,8 @@ public class Principal {
                                     System.out.println("2 - Realizar uma venda");
                                     System.out.println("3 - Excluir um cliente do sistema");
                                     System.out.println("4 - Atualizar os dados de um cliente");
-                                    System.out.println("5 - Voltar a pagina anterior");
+                                    System.out.println("5 - Buscar um cliente pelo cpf");
+                                    System.out.println("6 - Voltar a pagina anterior");
                                     opcao4 = input.nextInt();
 
                                     switch (opcao4) {
@@ -208,9 +209,22 @@ public class Principal {
                                             System.out.println("Número de telefone atualizado com sucesso!");
                                             break;
 
+                                        //atualizar o telefone de um cliente
+                                        case 5:
+
+                                            String cliente_cpf;
+
+                                            System.out.println("Informe o cpf do cliente que deseja buscar: ");
+                                            cliente_cpf = input.next();
+
+
+                                            clienteDB.searchCliente(cliente_cpf);
+
+                                            break;
+
 
                                         //voltar a pagina anterior
-                                        case 5:
+                                        case 6:
                                             pag3 = false;
                                             break;
                                     }

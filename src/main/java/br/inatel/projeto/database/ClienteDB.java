@@ -65,6 +65,75 @@ public class ClienteDB extends Database {
         return clientes;
     }
 
+    public boolean researchCliente( String cpf) {
+
+        connect();
+        Cliente cliente  = new Cliente();
+        boolean clientExist = false;
+        String sql = "call viewsVendas('" + cpf +  "')";
+
+        try {
+            statement = connection.createStatement();
+            result = statement.executeQuery(sql);
+
+            while(result.next()) {
+
+                System.out.println("Identificador da venda: " + result.getString("ID"));
+                System.out.println("Vendedor: " + result.getString("Vendedor"));
+                System.out.println("Total da venda: " + result.getString("Total"));
+                System.out.println("-----------------------------------------");
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro " + e.getMessage());
+        } finally {
+            try {
+                connection.close();
+                statement.close();
+                result.close();
+            } catch (SQLException e) {
+                System.out.println("Erro ao finalizar " + e.getMessage());
+            }
+        }
+        return clientExist;
+    }
+
+    public boolean searchCliente( String cpf) {
+
+        connect();
+        Cliente cliente  = new Cliente();
+        boolean clientExist = false;
+        String sql = "select * from cliente where cpf=" + cpf;
+
+        try {
+            statement = connection.createStatement();
+            result = statement.executeQuery(sql);
+
+            while(result.next()) {
+
+
+                System.out.println("Nome: " + result.getString("nome"));
+                System.out.println("CPF: " + result.getString("cpf"));
+                System.out.println("Telefone: " + result.getString("telefone"));
+                System.out.println("-----------------------------------------");
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro " + e.getMessage());
+        } finally {
+            try {
+                connection.close();
+                statement.close();
+                result.close();
+            } catch (SQLException e) {
+                System.out.println("Erro ao finalizar " + e.getMessage());
+            }
+        }
+        return clientExist;
+    }
+
     public boolean researchClienteByCpf( String cpf) {
 
         connect();
@@ -76,7 +145,7 @@ public class ClienteDB extends Database {
             statement = connection.createStatement();
             result = statement.executeQuery(sql);
 
-            if(result != null && result.next()){
+            while(result.next()) {
                 cliente = new Cliente(result.getString("cpf"), result.getString("nome"), result.getString("telefone"));
                 clientExist = true;
             }
