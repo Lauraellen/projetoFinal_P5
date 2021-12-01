@@ -31,4 +31,28 @@ public class ContaBancariaDB extends Database {
         return check;
     }
 
+    public boolean updateSalario(String cpf, float salario){
+        connect();
+        String sql = "UPDATE contaBancaria SET saldo = saldo + ? WHERE Funcionario_cpf=?";
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setFloat(1, salario);
+            preparedStatement.setString(2, cpf);
+            preparedStatement.execute();
+            check = true;
+        }catch (SQLException e){
+            System.out.println("Erro de operação: " + e.getMessage());
+            check = false;
+        }finally {
+            try {
+                connection.close();
+                preparedStatement.close();
+            }catch (SQLException e) {
+                System.out.println("Erro ao fechar a conexão: " + e.getMessage());
+            }
+        }
+        return check;
+    }
+
+
 }

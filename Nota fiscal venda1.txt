@@ -1,0 +1,15 @@
+Venda 1
+CPF do cliente: 41
+CPF do vendedor: 123
+Valor total da venda: 0.0
+Quantidade de produtos: 0
+Venda 1
+CPF do cliente: 456
+CPF do vendedor: 123
+Valor total da venda: 0.0
+Quantidade de produtos: 0
+Venda 1
+CPF do cliente: 741
+CPF do vendedor: 123
+Valor total da venda: 0.0
+Quantidade de produtos: 0
