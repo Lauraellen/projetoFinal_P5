@@ -1,12 +1,12 @@
 package br.inatel.projeto.database;
 
-import br.inatel.projeto.Cliente;
 import br.inatel.projeto.Comprador;
 
 import java.sql.SQLException;
 
 public class CompradorDB extends Database {
 
+    //insere um novo comprador
     public boolean insertComprador(Comprador comprador) {
         connect();
         String sql1 = "INSERT INTO Funcionario (cpf, nome, telefone, salario, gestor_cpf) VALUES (?,?, ?, ?, ?)";
@@ -39,6 +39,7 @@ public class CompradorDB extends Database {
         return check;
     }
 
+    //verifica se o comprador está cadastrado
     public boolean researchCompradorByCpf( String cpf) {
 
         connect();
@@ -69,6 +70,7 @@ public class CompradorDB extends Database {
         return compradorExist;
     }
 
+    //busca salario do comprador
     public float research_salario(String cpf) {
         float aux = 0;
         connect();

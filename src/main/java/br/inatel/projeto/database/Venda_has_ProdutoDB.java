@@ -1,6 +1,5 @@
 package br.inatel.projeto.database;
 
-import br.inatel.projeto.Venda;
 import br.inatel.projeto.Venda_has_Produto;
 
 import java.sql.SQLException;
@@ -8,6 +7,7 @@ import java.util.ArrayList;
 
 public class Venda_has_ProdutoDB extends Database {
 
+    //adiciona um produto a uma venda
     public boolean insertVenda_Produto(Venda_has_Produto venda_has_produto) {
 
         connect();
@@ -39,35 +39,5 @@ public class Venda_has_ProdutoDB extends Database {
         }
 
         return check;
-    }
-
-    public ArrayList <Venda_has_Produto> researchVenda_Produto() {
-
-        connect();
-        ArrayList <Venda_has_Produto> venda_has_produtos = new ArrayList<>();
-        String sql = "SELECT * FROM Venda_has_Produto";
-
-        try {
-            statement = connection.createStatement();
-            result = statement.executeQuery(sql);
-            while (result.next()) {
-                Venda_has_Produto venda_has_produtoTemp = new Venda_has_Produto(result.getInt("Venda_idVenda"), result.getInt("Produto_SNProduto"), result.getInt("qtdProdutos"));
-                System.out.println("ID da Venda = " + venda_has_produtoTemp.getVenda_idVenda());
-                System.out.println("SN do produto = " + venda_has_produtoTemp.getProduto_SNProduto());
-                System.out.println("Qtd de produtos = " + venda_has_produtoTemp.getQtdProdutos());
-                System.out.println("------------");
-            }
-        } catch (SQLException e) {
-            System.out.println("Erro " + e.getMessage());
-        } finally {
-            try {
-                connection.close();
-                statement.close();
-                result.close();
-            } catch (SQLException e) {
-                System.out.println("Erro ao finalizar " + e.getMessage());
-            }
-        }
-        return venda_has_produtos;
     }
 }

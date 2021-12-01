@@ -6,7 +6,7 @@ public class Produto {
     private String nomeProduto;
     private float valorCompra;
     private float valorVenda;
-    private String Forncedor_cnpj;
+    private String Fornecedor_cnpj;
     private int estoque;
 
     public Produto() {
@@ -17,7 +17,7 @@ public class Produto {
         this.nomeProduto = nomeProduto;
         this.valorCompra = valorCompra;
         this.valorVenda = valorVenda;
-        this.Forncedor_cnpj = forncedor_cnpj;
+        this.Fornecedor_cnpj = forncedor_cnpj;
         estoque = 0;
     }
 
@@ -54,11 +54,11 @@ public class Produto {
     }
 
     public String getForncedor_cnpj() {
-        return Forncedor_cnpj;
+        return Fornecedor_cnpj;
     }
 
     public void setForncedor_cnpj(String forncedor_cnpj) {
-        Forncedor_cnpj = forncedor_cnpj;
+        Fornecedor_cnpj = forncedor_cnpj;
     }
 
     public int getEstoque() {

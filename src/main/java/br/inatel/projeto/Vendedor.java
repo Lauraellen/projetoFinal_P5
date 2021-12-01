@@ -12,7 +12,7 @@ public class Vendedor extends Funcionario{
         this.telefone = telefone;
         this.gestor_cpf = gestor_cpf;
         salario = 2000;
-        metaMes = 100;
+        metaMes = 20;
         comissao = 100;
         numVendas = 0;
     }

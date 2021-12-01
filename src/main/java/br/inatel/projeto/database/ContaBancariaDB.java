@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 public class ContaBancariaDB extends Database {
 
+    //insere uma nova conta
     public boolean insertContaBancaria(ContaBancaria contaBancaria) {
         connect();
         String sql = "INSERT INTO ContaBancaria (numero, agencia, saldo, Funcionario_cpf) VALUES (?, ? ,?, ?)";
@@ -31,6 +32,7 @@ public class ContaBancariaDB extends Database {
         return check;
     }
 
+    //atualiza o saldo da conta
     public boolean updateSalario(String cpf, float salario){
         connect();
         String sql = "UPDATE contaBancaria SET saldo = saldo + ? WHERE Funcionario_cpf=?";

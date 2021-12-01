@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class VendaDB extends Database {
 
+    //insere uma nova venda
     public boolean insertVenda(Venda venda) {
 
         connect();
@@ -41,6 +42,7 @@ public class VendaDB extends Database {
         return check;
     }
 
+    //atualiza o valor e a quantidade de produtos da venda
     public boolean updateVenda(int idVenda, int SN_produto, int qtdProdutos) {
         float aux = 0;
         ProdutoDB produtoDB = new ProdutoDB();
@@ -74,101 +76,5 @@ public class VendaDB extends Database {
             }
         }
         return check;
-    }
-
-    public float research_ValorVenda(int idVenda) {
-
-        float aux = 0;
-        connect();
-        String sql = "SELECT valorVenda FROM Venda WHERE idVenda = " + idVenda;
-
-        try {
-
-            statement = connection.createStatement();
-            result = statement.executeQuery(sql);
-
-            if(result != null && result.next()){
-                aux = result.getFloat("valorVenda");
-            }
-
-
-        } catch (SQLException e) {
-            System.out.println("Erro " + e.getMessage());
-        } finally {
-            try {
-                connection.close();
-                statement.close();
-                result.close();
-            } catch (SQLException e) {
-                System.out.println("Erro ao finalizar " + e.getMessage());
-            }
-        }
-        return aux;
-    }
-
-    public int research_qtdProdutos(int idVenda) {
-
-        int aux = 0;
-        connect();
-        String sql = "SELECT qtdProdutos FROM Venda WHERE idVenda = " + idVenda;
-
-        try {
-
-            statement = connection.createStatement();
-            result = statement.executeQuery(sql);
-
-            if(result != null && result.next()){
-                aux = result.getInt("qtdProdutos");
-            }
-
-
-        } catch (SQLException e) {
-            System.out.println("Erro " + e.getMessage());
-        } finally {
-            try {
-                connection.close();
-                statement.close();
-                result.close();
-            } catch (SQLException e) {
-                System.out.println("Erro ao finalizar " + e.getMessage());
-            }
-        }
-        return aux;
-    }
-
-    public ArrayList<Venda> research_vendaByCpf(String cpf_cliente) {
-
-        connect();
-        ArrayList<Venda> vendas = new ArrayList<>();
-
-        String sql = "SELECT * FROM Venda WHERE Cliente_cpf = " + cpf_cliente;
-
-        try {
-            statement = connection.createStatement();
-            result = statement.executeQuery(sql);
-
-            while(result.next()) {
-                Venda vendasCliente = new Venda(result.getInt("IdVenda"), result.getString("Cliente_cpf"), result.getString("Vendedor_Funcionario_cpf"),
-                        result.getInt("qtdProdutos"), result.getFloat("valorVenda"));
-
-                System.out.println("Identificador da compra: " + vendasCliente.getIdVenda());
-                System.out.println("O vendedor foi: " + vendasCliente.getVendedor_Funcionario_cpf());
-                System.out.println("O total de peças é de: " + vendasCliente.getQtdProdutos());
-                System.out.println("Você realizou uma compra no total de: " + vendasCliente.getValorVenda());
-                System.out.println("---------------------------");
-                vendas.add(vendasCliente);
-            }
-        } catch (SQLException e) {
-            System.out.println("Erro " + e.getMessage());
-        } finally {
-            try {
-                connection.close();
-                statement.close();
-                result.close();
-            } catch (SQLException e) {
-                System.out.println("Erro ao finalizar " + e.getMessage());
-            }
-        }
-        return vendas;
     }
 }

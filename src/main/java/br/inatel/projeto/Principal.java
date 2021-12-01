@@ -7,7 +7,6 @@ public class Principal {
 
     public static void main(String[] args) {
 
-
         Scanner input = new Scanner(System.in);
 
         VendaDB vendaDB = new VendaDB();
@@ -19,11 +18,11 @@ public class Principal {
         FornecedorDB fornecedorDB = new FornecedorDB();
         ContaBancariaDB contaBancariaDB = new ContaBancariaDB();
 
-
-        int opcao1, opcao2, opcao3, opcao4, opcao5, opcao6, opcao7, opcao8, opcao11;
+        int opcao1, opcao2, opcao3, opcao4, opcao5, opcao6, opcao7, opcao8, opcao9;
 
         for (; ;) {
 
+            //menu principal
             System.out.println("Informe qual portal deseja ter acesso: ");
             System.out.println("1 - Portal do cliente");
             System.out.println("2 - Portal do funcionario");
@@ -40,7 +39,7 @@ public class Principal {
 
                         System.out.println("Informe o que você deseja fazer: ");
                         System.out.println("1 - Ver meus pedidos");
-                        System.out.println("2 - Voltar ao menu anterior");
+                        System.out.println("2 - Voltar ao menu principal");
                         opcao2 = input.nextInt();
 
                         switch (opcao2) {
@@ -89,7 +88,7 @@ public class Principal {
                                     System.out.println("2 - Realizar uma venda");
                                     System.out.println("3 - Excluir um cliente do sistema");
                                     System.out.println("4 - Atualizar os dados de um cliente");
-                                    System.out.println("5 - Buscar um cliente pelo cpf");
+                                    System.out.println("5 - Buscar clientes");
                                     System.out.println("6 - Voltar a pagina anterior");
                                     opcao4 = input.nextInt();
 
@@ -220,14 +219,13 @@ public class Principal {
                                             System.out.println("Número de telefone atualizado com sucesso!");
                                             break;
 
-                                        //atualizar o telefone de um cliente
+                                        //buscando cliente pelo cpf
                                         case 5:
 
                                             String cliente_cpf;
 
-                                            System.out.println("Informe o cpf do cliente que deseja buscar: ");
+                                            System.out.println("Informe o cpf do cliente: ");
                                             cliente_cpf = input.next();
-
 
                                             clienteDB.searchCliente(cliente_cpf);
 
@@ -426,9 +424,9 @@ public class Principal {
                                 System.out.println("Para qual tipo de funcionario deseja realizar o pagamento: ");
                                 System.out.println("1 - Vendedor");
                                 System.out.println("2 - Comprador");
-                                opcao11 = input.nextInt();
+                                opcao9 = input.nextInt();
 
-                                switch (opcao11){
+                                switch (opcao9){
 
                                     case 1:
                                         boolean metaBatida = false;

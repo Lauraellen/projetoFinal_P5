@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 public class FornecedorDB extends Database {
 
+    //insere um novo fornecedor
     public boolean insertFornecedor(Fornecedor fornecedor) {
         connect();
         String sql = "INSERT INTO Fornecedor (cnpj, nome, telefone, Comprador_Funcionario_cpf) VALUES (? ,?, ?, ?)";

@@ -1,14 +1,12 @@
 package br.inatel.projeto.database;
 
 import br.inatel.projeto.Cliente;
-import br.inatel.projeto.Produto;
-import br.inatel.projeto.Venda_has_Produto;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class ClienteDB extends Database {
 
+    //inserindo novo cliente
     public boolean insertCliente(Cliente cliente) {
         connect();
         String sql = "INSERT INTO Cliente (cpf, nome, telefone) VALUES (?, ? ,?)";
@@ -34,37 +32,8 @@ public class ClienteDB extends Database {
         return check;
     }
 
-    public ArrayList<Cliente> researchCliente() {
 
-        connect();
-        ArrayList <Cliente> clientes = new ArrayList<>();
-        String sql = "SELECT * FROM Cliente";
-
-        try {
-            statement = connection.createStatement();
-            result = statement.executeQuery(sql);
-            while (result.next()) {
-                Cliente clienteTemp = new Cliente(result.getString("cpf"), result.getString("nome"), result.getString("telefone"));
-                System.out.println("Nome: " + clienteTemp.getNome());
-                System.out.println("Cpf: " + clienteTemp.getCpf());
-                System.out.println("Telefone: " + clienteTemp.getTelefone());
-                System.out.println("------------");
-            }
-
-        } catch (SQLException e) {
-            System.out.println("Erro " + e.getMessage());
-        } finally {
-            try {
-                connection.close();
-                statement.close();
-                result.close();
-            } catch (SQLException e) {
-                System.out.println("Erro ao finalizar " + e.getMessage());
-            }
-        }
-        return clientes;
-    }
-
+    //buscando pedidos do cliente
     public boolean researchCliente( String cpf) {
 
         connect();
@@ -99,6 +68,7 @@ public class ClienteDB extends Database {
         return clientExist;
     }
 
+    //busca cliente por cpf
     public boolean searchCliente( String cpf) {
 
         connect();
@@ -111,7 +81,6 @@ public class ClienteDB extends Database {
             result = statement.executeQuery(sql);
 
             while(result.next()) {
-
 
                 System.out.println("Nome: " + result.getString("nome"));
                 System.out.println("CPF: " + result.getString("cpf"));
@@ -134,6 +103,7 @@ public class ClienteDB extends Database {
         return clientExist;
     }
 
+    //verifica se o cliente já é cadastrado
     public boolean researchClienteByCpf( String cpf) {
 
         connect();
@@ -164,8 +134,7 @@ public class ClienteDB extends Database {
         return clientExist;
     }
 
-
-
+    //atualiza o telefone do cliente
     public boolean updateCliente (String cpf, String telefone) {
 
         connect();
@@ -191,6 +160,7 @@ public class ClienteDB extends Database {
         return check;
     }
 
+    //deleta cliente
     public boolean deleteCliente (String cpf) {
 
         connect();

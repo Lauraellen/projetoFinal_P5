@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class ProdutoDB extends Database {
 
+    //insere um novo produto
     public boolean insertProduto(Produto produto) {
         connect();
         String sql = "INSERT INTO Produto (SN_produto, nomeProduto, valorCompra, valorVenda, Fornecedor_cnpj, estoque) VALUES (?, ?, ? ,?, ?, ?)";
@@ -36,6 +37,7 @@ public class ProdutoDB extends Database {
         return check;
     }
 
+    //busca o valor do produto
     public float research_ValorProduto(int SN_produto) {
 
         float aux = 0;
@@ -66,6 +68,7 @@ public class ProdutoDB extends Database {
         return aux;
     }
 
+    //atualiza o estoque ao realizar uma venda
     public boolean updateEstoqueVenda(int SN, int qtd){
         connect();
         String sql = "UPDATE Produto SET estoque = estoque - ? WHERE SN_Produto = ?";
@@ -89,6 +92,7 @@ public class ProdutoDB extends Database {
         return check;
     }
 
+    //atualiza o estoque ao realizar uma compra
     public boolean updateEstoqueCompra(int SN, int qtd){
         connect();
         String sql = "UPDATE Produto SET estoque = estoque + ? WHERE SN_Produto = ?";

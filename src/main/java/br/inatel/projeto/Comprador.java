@@ -2,7 +2,6 @@ package br.inatel.projeto;
 
 public class Comprador extends Funcionario{
 
-    private String paisVenda;
 
     public Comprador (String cpf, String nome, String telefone, String gestor_cpf){
         this.cpf = cpf;
@@ -12,14 +11,12 @@ public class Comprador extends Funcionario{
         salario = 2500;
     }
 
+    public Comprador() {
+    }
+
     public Comprador (String cpf){
         this.cpf = cpf;
     }
 
-    public Comprador() {
-    }
 
-    public String getPaisVenda() {
-        return paisVenda;
-    }
 }

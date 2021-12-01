@@ -1,8 +1,5 @@
 package br.inatel.projeto;
 
-
-import br.inatel.projeto.database.ProdutoDB;
-
 public class Venda {
 
     private static int contador = 1;

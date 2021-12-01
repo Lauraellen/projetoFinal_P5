@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 public class VendedorDB extends Database {
 
+    //insere um novo vendedor
     public boolean insertVendedor(Vendedor vendedor) {
         connect();
         String sql1 = "INSERT INTO Funcionario (cpf, nome, telefone, salario, gestor_cpf) VALUES (?,?, ?, ?, ?)";
@@ -42,6 +43,7 @@ public class VendedorDB extends Database {
         return check;
     }
 
+    //verifica se o vendedor está cadastrado
     public boolean researchVendedorByCpf( String cpf) {
 
         connect();
@@ -72,6 +74,7 @@ public class VendedorDB extends Database {
         return vendedorExist;
     }
 
+    //busca o salario do vendedor
     public float research_salario(String cpf) {
         int aux1 = 0;
         float aux2 = 0;
@@ -106,6 +109,7 @@ public class VendedorDB extends Database {
         return ((aux1*aux2) + aux3);
     }
 
+    //atualiza o numero de vendas
     public boolean updateVenda(String cpf){
         connect();
         String sql = "UPDATE Vendedor SET numVendas = numVendas + 1 WHERE Funcionario_cpf = ?";
@@ -128,6 +132,7 @@ public class VendedorDB extends Database {
         return check;
     }
 
+    //busca a meta do funcionario
     public void research_meta(String cpf) {
 
         int metaMes = 0;
@@ -154,6 +159,7 @@ public class VendedorDB extends Database {
         }
     }
 
+    //busca o numero de vendas
     public int research_numVendas(String cpf) {
 
         connect();
@@ -175,6 +181,7 @@ public class VendedorDB extends Database {
         return aux;
     }
 
+    //atualiza a meta
     public boolean updateMeta(String cpf){
         connect();
         String sql = "UPDATE Vendedor SET metaMes = metaMes + 5 WHERE Funcionario_cpf = ?";
