@@ -18,6 +18,9 @@ public class Vendedor extends Funcionario{
         setor = "Vendas";
     }
 
+    public Vendedor() {
+    }
+
     public int getNumVendas() {
         return numVendas;
     }

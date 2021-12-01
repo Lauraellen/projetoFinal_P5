@@ -1,5 +1,6 @@
 package br.inatel.projeto.database;
 
+import br.inatel.projeto.Comprador;
 import br.inatel.projeto.Vendedor;
 
 import java.sql.SQLException;
@@ -40,5 +41,36 @@ public class VendedorDB extends Database {
             }
         }
         return check;
+    }
+
+    public boolean researchVendedorByCpf( String cpf) {
+
+        connect();
+        Vendedor vendedor  = new Vendedor();
+        boolean vendedorExist = false;
+        String sql = "SELECT * FROM vendedor WHERE cpf = " + cpf;
+
+        try {
+            statement = connection.createStatement();
+            result = statement.executeQuery(sql);
+
+            if(result != null && result.next()){
+                vendedor = new Vendedor(result.getString("cpf"), result.getString("nome"), result.getString("telefone"),
+                        result.getString("gestor_cpf"));
+                vendedorExist = true;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro " + e.getMessage());
+        } finally {
+            try {
+                connection.close();
+                statement.close();
+                result.close();
+            } catch (SQLException e) {
+                System.out.println("Erro ao finalizar " + e.getMessage());
+            }
+        }
+        return vendedorExist;
     }
 }

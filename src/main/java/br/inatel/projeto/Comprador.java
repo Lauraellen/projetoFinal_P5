@@ -14,6 +14,9 @@ public class Comprador extends Funcionario{
         salario = 2500;
     }
 
+    public Comprador() {
+    }
+
     public String getPaisVenda() {
         return paisVenda;
     }
