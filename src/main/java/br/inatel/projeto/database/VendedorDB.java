@@ -1,5 +1,6 @@
 package br.inatel.projeto.database;
 
+import br.inatel.projeto.Comprador;
 import br.inatel.projeto.Vendedor;
 
 import java.sql.SQLException;
@@ -42,54 +43,21 @@ public class VendedorDB extends Database {
         return check;
     }
 
-    public boolean updateVenda(String cpf){
-        connect();
-        String sql = "UPDATE Vendedor SET numVendas = numVendas + 1 WHERE Funcionario_cpf = ?";
-        try{
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, cpf);
-            preparedStatement.execute();
-            check = true;
-        }catch (SQLException e){
-            System.out.println("Erro de operação: " + e.getMessage());
-            check = false;
-        }finally {
-            try {
-                connection.close();
-                preparedStatement.close();
-            }catch (SQLException e) {
-                System.out.println("Erro ao fechar a conexão: " + e.getMessage());
-            }
-        }
-        return check;
-    }
+    public boolean researchVendedorByCpf( String cpf) {
 
-    public float research_salario(String cpf) {
-
-        int aux1 = 0;
-        float aux2 = 0;
-        float aux3 = 0;
         connect();
-        String sql1 = "SELECT numVendas FROM Vendedor WHERE Funcionario_cpf = " + cpf;
-        String sql2 = "SELECT comissao FROM Vendedor WHERE Funcionario_cpf = " + cpf;
-        String sql3 = "SELECT salario FROM Funcionario WHERE cpf = " + cpf;
+        Vendedor vendedor  = new Vendedor();
+        boolean vendedorExist = false;
+        String sql = "SELECT * FROM vendedor WHERE cpf = " + cpf;
 
         try {
-
             statement = connection.createStatement();
-            result = statement.executeQuery(sql1);
-            if(result != null && result.next()){
-                aux1 = result.getInt("numVendas");
-            }
+            result = statement.executeQuery(sql);
 
-            result = statement.executeQuery(sql2);
             if(result != null && result.next()){
-                aux2 = result.getFloat("comissao");
-            }
-
-            result = statement.executeQuery(sql3);
-            if(result != null && result.next()){
-                aux3 = result.getFloat("salario");
+                vendedor = new Vendedor(result.getString("cpf"), result.getString("nome"), result.getString("telefone"),
+                        result.getString("gestor_cpf"));
+                vendedorExist = true;
             }
 
         } catch (SQLException e) {
@@ -103,7 +71,6 @@ public class VendedorDB extends Database {
                 System.out.println("Erro ao finalizar " + e.getMessage());
             }
         }
-        return ((aux1*aux2) + aux3);
+        return vendedorExist;
     }
-
 }

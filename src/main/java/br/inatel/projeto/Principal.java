@@ -135,46 +135,57 @@ public class Principal {
 
                                             System.out.println("Informe o cpf do cliente: ");
                                             Cliente_cpf = input.next();
-                                            System.out.println("Informe seu cpf: ");
-                                            Vendedor_Funcionario_cpf = input.next();
 
-                                            Venda venda = new Venda(Cliente_cpf, Vendedor_Funcionario_cpf);
-                                            vendaDB.insertVenda(venda);
+                                            if (clienteDB.researchClienteByCpf(Cliente_cpf)) {
+                                                System.out.println("Informe seu cpf: ");
+                                                Vendedor_Funcionario_cpf = input.next();
 
-                                            System.out.println("Venda cadastrada");
+                                                if(vendedorDB.researchVendedorByCpf(Vendedor_Funcionario_cpf)) {
+                                                    Venda venda = new Venda(Cliente_cpf, Vendedor_Funcionario_cpf);
+                                                    vendaDB.insertVenda(venda);
+                                                    System.out.println("Venda cadastrada");
 
-                                            boolean pag7 = true;
-                                            while (pag7) {
-                                                System.out.println("O que deseja fazer agora? ");
-                                                System.out.println("1 - Agregar produto a nova venda");
-                                                System.out.println("2 - Fechar venda e gerar nota fiscal");
-                                                opcao6 = input.nextInt();
+                                                    boolean pag7 = true;
+                                                    while (pag7) {
+                                                        System.out.println("1 - Insira produtos a nova venda");
+                                                        System.out.println("2 - Fechar venda e gerar nota fiscal");
+                                                        opcao6 = input.nextInt();
 
-                                                switch (opcao6) {
+                                                        switch (opcao6) {
 
-                                                    case 1:
-                                                        int Produto_SNProduto;
-                                                        int qtdProdutos;
+                                                            case 1:
+                                                                int Produto_SNProduto;
+                                                                int qtdProdutos;
 
-                                                        System.out.println("Informe o SN do produto: ");
-                                                        Produto_SNProduto = input.nextInt();
-                                                        System.out.println("Informe a quantidade de produtos: ");
-                                                        qtdProdutos = input.nextInt();
+                                                                System.out.println("Informe o SN do produto: ");
+                                                                Produto_SNProduto = input.nextInt();
+                                                                System.out.println("Informe a quantidade de produtos: ");
+                                                                qtdProdutos = input.nextInt();
 
-                                                        Venda_has_Produto venda_has_produto = new Venda_has_Produto(venda.getIdVenda(), Produto_SNProduto, qtdProdutos);
-                                                        venda_has_produtoDB.insertVenda_Produto(venda_has_produto);
-                                                        break;
+                                                                Venda_has_Produto venda_has_produto = new Venda_has_Produto(venda.getIdVenda(), Produto_SNProduto, qtdProdutos);
+                                                                venda_has_produtoDB.insertVenda_Produto(venda_has_produto);
+                                                                break;
 
-                                                    case 2:
-                                                        Arquivo arquivo = new Arquivo();
-                                                        arquivo.escrever(venda);
-                                                        System.out.println("Venda completa, nota fiscal gerada!");
-                                                        pag7 = false;
-                                                        break;
+                                                            case 2:
+                                                                Arquivo arquivo = new Arquivo();
+                                                                arquivo.escrever(venda);
+                                                                System.out.println("Venda completa, nota fiscal gerada!");
+                                                                pag7 = false;
+                                                                break;
+                                                        }
+
+                                                    }
+                                                    break;
+                                                } else {
+                                                    System.out.println("Esse vendedor não está cadastrado");
+                                                    break;
                                                 }
 
+                                            } else {
+                                                System.out.println("Esse cliente não está cadastrado");
+                                                break;
                                             }
-                                            break;
+
 
                                         //excluir um cliente do sistema
                                         case 3:
@@ -223,8 +234,7 @@ public class Principal {
                                     System.out.println("1 - Cadastrar um novo fornecedor");
                                     System.out.println("2 - Cadastrar um novo produto");
                                     System.out.println("3 - Realizar uma compra");
-                                    System.out.println("4 - Realizar uma venda");
-                                    System.out.println("5 - Voltar a pagina anterior");
+                                    System.out.println("4 - Voltar a pagina anterior");
                                     opcao8 = input.nextInt();
 
                                     switch (opcao8){
@@ -239,8 +249,9 @@ public class Principal {
 
                                             System.out.println("Informe o cnpj do fornecedor: ");
                                             cnpj = input.next();
+                                            input.nextLine();
                                             System.out.println("Informe o nome do fornecedor: ");
-                                            nome = input.next();
+                                            nome = input.nextLine();
                                             System.out.println("Informe o telefone do fornecedor: ");
                                             telefone = input.next();
                                             System.out.println("Informe o pais do fornecedor: ");
@@ -248,11 +259,17 @@ public class Principal {
                                             System.out.println("Informe seu cpf: ");
                                             comprador_cpf = input.next();
 
-                                            Fornecedor fornecedor1 = new Fornecedor(cnpj, nome, telefone, pais, comprador_cpf);
-                                            fornecedorDB.insertFornecedor(fornecedor1);
+                                            if ( !compradorDB.researchCompradorByCpf(comprador_cpf)) {
+                                                Fornecedor fornecedor1 = new Fornecedor(cnpj, nome, telefone, pais, comprador_cpf);
+                                                fornecedorDB.insertFornecedor(fornecedor1);
 
-                                            System.out.println("Fornecedor cadastrado com sucesso");
-                                            break;
+                                                System.out.println("Fornecedor cadastrado com sucesso");
+                                                break;
+                                            } else {
+                                                System.out.println("Não é possivel cadastrar esse fornecedor." +
+                                                        "Esse cpf do comprador não existe");
+                                                break;
+                                            }
 
                                         case 2:
 
@@ -264,12 +281,15 @@ public class Principal {
 
                                             System.out.println("Informe o SN do produto: ");
                                             SN = input.nextInt();
+                                            input.nextLine();
                                             System.out.println("Informe o nome do produto: ");
-                                            nomeProduto = input.next();
+                                            nomeProduto = input.nextLine();
                                             System.out.println("Informe o valor de compra do produto: ");
                                             valor_compra = input.nextFloat();
+                                            input.nextLine();
                                             System.out.println("Informe o valor de venda do produto: ");
                                             valor_venda = input.nextFloat();
+                                            input.nextLine();
                                             System.out.println("Informe o cnpj do fornecedor que vende o produto: ");
                                             fornecedor_cnpj = input.next();
 
@@ -282,11 +302,8 @@ public class Principal {
                                         case 3:
 
                                             break;
+
                                         case 4:
-
-                                            break;
-
-                                        case 5:
                                             pag5 = false;
                                             break;
                                     }
@@ -333,16 +350,20 @@ public class Principal {
 
                                         System.out.println("Informe o cpf: ");
                                         cpf = input.next();
+                                        input.nextLine();
                                         System.out.println("Informe o nome completo: ");
-                                        nome = input.next();
+                                        nome = input.nextLine();
                                         System.out.println("Informe o numero de telefone: ");
                                         telefone = input.next();
+                                        input.nextLine();
                                         System.out.println("Informe o cpf do gestor responsavel pelo novo funcionario: ");
                                         gestor_cpf = input.next();
                                         System.out.println("Informe o numero da conta bancaria do novo funcionario: ");
                                         numeroConta = input.nextInt();
+                                        input.nextLine();
                                         System.out.println("Informe o numero da agencia da conta do novo funcionario: ");
                                         agenciaConta = input.nextInt();
+                                        input.nextLine();
                                         Vendedor vendedor1 = new Vendedor(cpf, nome, telefone, gestor_cpf);
                                         ContaBancaria contaBancaria = new ContaBancaria(numeroConta, agenciaConta,cpf);
                                         vendedorDB.insertVendedor(vendedor1);
@@ -354,8 +375,9 @@ public class Principal {
 
                                         System.out.println("Informe o cpf: ");
                                         cpf = input.next();
+                                        input.nextLine();
                                         System.out.println("Informe o nome completo: ");
-                                        nome = input.next();
+                                        nome = input.nextLine();
                                         System.out.println("Informe o numero de telefone: ");
                                         telefone = input.next();
                                         System.out.println("Informe o cpf do gestor responsavel pelo novo funcionario: ");
