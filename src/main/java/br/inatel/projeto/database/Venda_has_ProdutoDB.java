@@ -13,6 +13,7 @@ public class Venda_has_ProdutoDB extends Database {
         connect();
         String sql = "INSERT INTO Venda_has_Produto (Venda_idVenda, Produto_SNProduto, qtdProdutos) VALUES (?, ? ,?)";
         VendaDB vendaDB = new VendaDB();
+        ProdutoDB produtoDB = new ProdutoDB();
 
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -23,6 +24,7 @@ public class Venda_has_ProdutoDB extends Database {
             check = true;
 
             vendaDB.updateVenda(venda_has_produto.getVenda_idVenda(),venda_has_produto.getProduto_SNProduto(),venda_has_produto.getQtdProdutos());
+            produtoDB.updateEstoqueVenda(venda_has_produto.getProduto_SNProduto(),venda_has_produto.getQtdProdutos());
 
         } catch (SQLException e) {
             System.out.println("Erro " + e.getMessage());

@@ -7,6 +7,7 @@ public class Produto {
     private float valorCompra;
     private float valorVenda;
     private String Forncedor_cnpj;
+    private int estoque;
 
     public Produto() {
     }
@@ -17,6 +18,7 @@ public class Produto {
         this.valorCompra = valorCompra;
         this.valorVenda = valorVenda;
         this.Forncedor_cnpj = forncedor_cnpj;
+        estoque = 0;
     }
 
     public String getNomeProduto() {
@@ -57,5 +59,13 @@ public class Produto {
 
     public void setForncedor_cnpj(String forncedor_cnpj) {
         Forncedor_cnpj = forncedor_cnpj;
+    }
+
+    public int getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(int estoque) {
+        this.estoque = estoque;
     }
 }

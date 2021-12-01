@@ -10,7 +10,7 @@ public class ProdutoDB extends Database {
 
     public boolean insertProduto(Produto produto) {
         connect();
-        String sql = "INSERT INTO Produto (SN_produto, nomeProduto, valorCompra, valorVenda, Fornecedor_cnpj) VALUES (?, ? ,?, ?, ?)";
+        String sql = "INSERT INTO Produto (SN_produto, nomeProduto, valorCompra, valorVenda, Fornecedor_cnpj, estoque) VALUES (?, ?, ? ,?, ?, ?)";
         try {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, produto.getSN_produto());
@@ -18,6 +18,7 @@ public class ProdutoDB extends Database {
             preparedStatement.setFloat(3, produto.getValorCompra());
             preparedStatement.setFloat(4, produto.getValorVenda());
             preparedStatement.setString(5, produto.getForncedor_cnpj());
+            preparedStatement.setInt(6, produto.getEstoque());
 
             preparedStatement.execute();
             check = true;
@@ -64,4 +65,51 @@ public class ProdutoDB extends Database {
         }
         return aux;
     }
+
+    public boolean updateEstoqueVenda(int SN, int qtd){
+        connect();
+        String sql = "UPDATE Produto SET estoque = estoque - ? WHERE SN_Produto = ?";
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, qtd);
+            preparedStatement.setInt(2, SN);
+            preparedStatement.execute();
+            check = true;
+        }catch (SQLException e){
+            System.out.println("Erro de operação: " + e.getMessage());
+            check = false;
+        }finally {
+            try {
+                connection.close();
+                preparedStatement.close();
+            }catch (SQLException e) {
+                System.out.println("Erro ao fechar a conexão: " + e.getMessage());
+            }
+        }
+        return check;
+    }
+
+    public boolean updateEstoqueCompra(int SN, int qtd){
+        connect();
+        String sql = "UPDATE Produto SET estoque = estoque + ? WHERE SN_Produto = ?";
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, qtd);
+            preparedStatement.setInt(2, SN);
+            preparedStatement.execute();
+            check = true;
+        }catch (SQLException e){
+            System.out.println("Erro de operação: " + e.getMessage());
+            check = false;
+        }finally {
+            try {
+                connection.close();
+                preparedStatement.close();
+            }catch (SQLException e) {
+                System.out.println("Erro ao fechar a conexão: " + e.getMessage());
+            }
+        }
+        return check;
+    }
+
 }
