@@ -245,7 +245,6 @@ public class Principal {
                                             String cnpj;
                                             String nome;
                                             String telefone;
-                                            String pais;
                                             String comprador_cpf;
 
                                             System.out.println("Informe o cnpj do fornecedor: ");
@@ -255,13 +254,11 @@ public class Principal {
                                             nome = input.nextLine();
                                             System.out.println("Informe o telefone do fornecedor: ");
                                             telefone = input.next();
-                                            System.out.println("Informe o pais do fornecedor: ");
-                                            pais = input.next();
                                             System.out.println("Informe seu cpf: ");
                                             comprador_cpf = input.next();
 
                                             if ( !compradorDB.researchCompradorByCpf(comprador_cpf)) {
-                                                Fornecedor fornecedor1 = new Fornecedor(cnpj, nome, telefone, pais, comprador_cpf);
+                                                Fornecedor fornecedor1 = new Fornecedor(cnpj, nome, telefone, comprador_cpf);
                                                 fornecedorDB.insertFornecedor(fornecedor1);
 
                                                 System.out.println("Fornecedor cadastrado com sucesso");
@@ -325,7 +322,6 @@ public class Principal {
                     String nome;
                     String telefone;
                     String gestor_cpf;
-                    String pais_venda;
                     int numeroConta;
                     int agenciaConta;
 
@@ -383,13 +379,11 @@ public class Principal {
                                         telefone = input.next();
                                         System.out.println("Informe o cpf do gestor responsavel pelo novo funcionario: ");
                                         gestor_cpf = input.next();
-                                        System.out.println("Informe o pais que o novo funcionário vai atender: ");
-                                        pais_venda = input.next();
                                         System.out.println("Informe o numero da conta bancaria do novo funcionario: ");
                                         numeroConta = input.nextInt();
                                         System.out.println("Informe o numero da agencia da conta do novo funcionario: ");
                                         agenciaConta = input.nextInt();
-                                        Comprador comprador1 = new Comprador(cpf, nome, telefone, gestor_cpf, pais_venda);
+                                        Comprador comprador1 = new Comprador(cpf, nome, telefone, gestor_cpf);
                                         ContaBancaria contaBancaria1 = new ContaBancaria(numeroConta, agenciaConta,cpf);
                                         compradorDB.insertComprador(comprador1);
                                         contaBancariaDB.insertContaBancaria(contaBancaria1);

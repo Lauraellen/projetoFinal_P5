@@ -5,7 +5,6 @@ public abstract class Funcionario {
     protected String cpf;
     protected String nome;
     protected String telefone;
-    protected String setor;
     protected float salario;
     protected String gestor_cpf;
 
@@ -17,9 +16,6 @@ public abstract class Funcionario {
     }
     public String getTelefone() {
         return telefone;
-    }
-    public String getSetor() {
-        return setor;
     }
     public float getSalario() {
         return salario;

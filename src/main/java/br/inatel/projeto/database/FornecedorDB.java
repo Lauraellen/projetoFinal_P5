@@ -9,14 +9,13 @@ public class FornecedorDB extends Database {
 
     public boolean insertFornecedor(Fornecedor fornecedor) {
         connect();
-        String sql = "INSERT INTO Fornecedor (cnpj, nome, telefone, pais, Comprador_Funcionario_cpf) VALUES (?, ? ,?, ?, ?)";
+        String sql = "INSERT INTO Fornecedor (cnpj, nome, telefone, Comprador_Funcionario_cpf) VALUES (? ,?, ?, ?)";
         try {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, fornecedor.getCpf());
             preparedStatement.setString(2, fornecedor.getNome());
             preparedStatement.setString(3, fornecedor.getTelefone());
-            preparedStatement.setString(4, fornecedor.getPais());
-            preparedStatement.setString(5, fornecedor.getCompradorCpf());
+            preparedStatement.setString(4, fornecedor.getCompradorCpf());
 
             preparedStatement.execute();
             check = true;

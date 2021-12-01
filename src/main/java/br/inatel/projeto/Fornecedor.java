@@ -4,17 +4,15 @@ public class Fornecedor {
     private String cnpj;
     private String nome;
     private String telefone;
-    private String pais;
     private String compradorCpf;
 
     public Fornecedor() {
     }
 
-    public Fornecedor(String cnpj, String nome, String telefone, String pais, String compradorCpf) {
+    public Fornecedor(String cnpj, String nome, String telefone, String compradorCpf) {
         this.cnpj = cnpj;
         this.nome = nome;
         this.telefone = telefone;
-        this.pais = pais;
         this.compradorCpf = compradorCpf;
     }
 
@@ -40,14 +38,6 @@ public class Fornecedor {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }
-
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
     }
 
     public String getCompradorCpf() {

@@ -15,7 +15,6 @@ public class Vendedor extends Funcionario{
         metaMes = 100;
         comissao = 100;
         numVendas = 0;
-        setor = "Vendas";
     }
 
     public Vendedor() {
